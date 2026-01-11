@@ -16,7 +16,7 @@ AOS.init({
 // ==========================================
 // Navbar Scroll Effect
 // ==========================================
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const navbar = document.getElementById('mainNav');
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
@@ -38,7 +38,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: offsetTop,
                 behavior: 'smooth'
             });
-            
+
             // Close mobile menu if open
             const navbarCollapse = document.querySelector('.navbar-collapse');
             if (navbarCollapse.classList.contains('show')) {
@@ -51,10 +51,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ==========================================
 // Active Navigation Link on Scroll
 // ==========================================
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -124,7 +124,7 @@ if (statsSection) {
 // ==========================================
 const scrollTopBtn = document.getElementById('scrollTop');
 
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     if (window.scrollY > 300) {
         scrollTopBtn.classList.add('show');
     } else {
@@ -132,7 +132,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-scrollTopBtn.addEventListener('click', function() {
+scrollTopBtn.addEventListener('click', function () {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -144,34 +144,59 @@ scrollTopBtn.addEventListener('click', function() {
 // ==========================================
 const contactForm = document.getElementById('contactForm');
 
-contactForm.addEventListener('submit', function(e) {
+contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
-    
+
+    // Google Apps Script Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbytHM3YSNnPLgBhzheId2UrObxH6ejPlKHGkS-ieeuq6KPOXXG03ddk52enEl3DP8B8/exec';
+
+    // Show loading state
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Booking...';
+    submitBtn.disabled = true;
+
     // Get form data
-    const formData = {
-        name: document.getElementById('name').value,
-        phone: document.getElementById('phone').value,
-        email: document.getElementById('email').value,
-        service: document.getElementById('service').value,
-        address: document.getElementById('address').value,
-        message: document.getElementById('message').value
-    };
-    
-    // In a real application, you would send this data to a server
-    console.log('Form submitted:', formData);
-    
-    // Show success message
-    alert('Thank you! Your booking request has been received. We will contact you shortly to confirm your pick-up time.');
-    
-    // Reset form
-    contactForm.reset();
+    const formData = new FormData(contactForm);
+    const formObject = Object.fromEntries(formData.entries());
+
+    // 1. Submit to Google Sheets (Backend)
+    const requestBody = new URLSearchParams(formData);
+
+    fetch(scriptURL, { method: 'POST', body: requestBody })
+        .then(response => {
+            console.log('Success!', response);
+
+            // 2. Prepare WhatsApp Message
+            const phoneNumber = "919700036377";
+            const text = `Hello *Mr Cobbler*,%0a%0aI would like to book a service:%0aReference No: ${Date.now().toString().slice(-4)}%0a---------------------------%0a*Name*: ${formObject.name}%0a*Service*: ${formObject.service}%0a*Phone*: ${formObject.phone}%0a*Address*: ${formObject.address}%0a*Note*: ${formObject.message}%0a---------------------------%0aPlease confirm my booking.`;
+
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
+
+            // Show success and redirect
+            alert('🎉 Booking Submitted Successfully!\n\nWe have sent you a confirmation email.\nClick OK to open WhatsApp and send your order details.');
+
+            // Redirect to WhatsApp
+            window.open(whatsappUrl, '_blank');
+
+            // Reset form
+            contactForm.reset();
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert('Something went wrong. Please try again or call us directly.');
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        });
 });
 
 // ==========================================
 // Prevent form fields from being auto-filled 
 // with previous scroll position colors
 // ==========================================
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     // Force repaint to ensure proper styling
     setTimeout(() => {
         document.body.style.display = 'none';
@@ -185,7 +210,7 @@ window.addEventListener('load', function() {
 // ==========================================
 const serviceCards = document.querySelectorAll('.service-card');
 serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
+    card.addEventListener('mouseenter', function () {
         this.style.transition = 'all 0.3s ease';
     });
 });
@@ -193,7 +218,7 @@ serviceCards.forEach(card => {
 // ==========================================
 // Add parallax effect to hero section
 // ==========================================
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const scrolled = window.scrollY;
     const heroSection = document.querySelector('.hero-section');
     if (heroSection) {
@@ -207,7 +232,7 @@ window.addEventListener('scroll', function() {
 function typeWriter(element, text, speed = 50) {
     let i = 0;
     element.textContent = '';
-    
+
     function type() {
         if (i < text.length) {
             element.textContent += text.charAt(i);
@@ -215,7 +240,7 @@ function typeWriter(element, text, speed = 50) {
             setTimeout(type, speed);
         }
     }
-    
+
     type();
 }
 
