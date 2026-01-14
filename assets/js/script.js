@@ -1,5 +1,4 @@
-// ==========================================
-// MR Cobbler - Custom JavaScript
+// MR Cobblers - Custom JavaScript
 // Interactive Features & Animations
 // ==========================================
 
@@ -168,8 +167,8 @@ contactForm.addEventListener('submit', function (e) {
             console.log('Success!', response);
 
             // 2. Prepare WhatsApp Message
-            const phoneNumber = "919700036377";
-            const text = `Hello *Mr Cobbler*,%0a%0aI would like to book a service:%0aReference No: ${Date.now().toString().slice(-4)}%0a---------------------------%0a*Name*: ${formObject.name}%0a*Service*: ${formObject.service}%0a*Phone*: ${formObject.phone}%0a*Address*: ${formObject.address}%0a*Note*: ${formObject.message}%0a---------------------------%0aPlease confirm my booking.`;
+            const phoneNumber = "918801091101";
+            const text = `Hello *Mr Cobblers*,%0a%0aI would like to book a service:%0aReference No: ${Date.now().toString().slice(-4)}%0a---------------------------%0a*Name*: ${formObject.name}%0a*Service*: ${formObject.service}%0a*Phone*: ${formObject.phone}%0a*Address*: ${formObject.address}%0a*Note*: ${formObject.message}%0a---------------------------%0aPlease confirm my booking.`;
 
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
 
@@ -304,6 +303,7 @@ style.textContent = `
         to {
             transform: scale(4);
             opacity: 0;
+            display: none;
         }
     }
 `;
@@ -331,5 +331,5 @@ if ('IntersectionObserver' in window) {
 // ==========================================
 // Console Message
 // ==========================================
-console.log('%c🎉 Welcome to MR Cobbler! 👞', 'color: #667eea; font-size: 20px; font-weight: bold;');
+console.log('%c🎉 Welcome to MR Cobblers! 👞', 'color: #667eea; font-size: 20px; font-weight: bold;');
 console.log('%cTrusted Shoe Repair at your doorStep', 'color: #94a3b8; font-size: 14px;');

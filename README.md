@@ -1,10 +1,10 @@
-# MR Cobbler - Expert Leather Care Service
+# MR Cobblers - Expert Leather Care Service
 
-![MR Cobbler Logo](assets/images/logo.png)
+![MR Cobblers Logo](assets/images/logo.png)
 
 ## 🛠️ About
 
-**MR Cobbler** is a premium leather care service offering professional repair, cleaning, and restoration for all types of leather items including shoes, bags, belts, jackets, and accessories. We provide convenient doorstep pick-up and delivery service.
+**MR Cobblers** is a premium leather care service offering professional repair, cleaning, and restoration for all types of leather items including shoes, bags, belts, jackets, and accessories. We provide convenient doorstep pick-up and delivery service.
 
 ## ✨ Features
 
@@ -43,15 +43,15 @@ This website features a premium **leather-inspired design** with:
 
 ## 📧 Contact
 
-- **Phone**: +91 98765 43210
-- **Email**: info@mrcobbler.com
-- **Location**: Mumbai, Maharashtra
+- **Phone**: +91 8801091101
+- **Email**: info@mrcobblers.com
+- **Location**: Hyderabad, Telangana
 
 ## 📄 License & Copyright
 
-© 2026 MR Cobbler Pick-up & Drop. All rights reserved.
+© 2026 MR Cobblers Pick-up & Drop. All rights reserved.
 
-Logo © 2026 MR Cobbler - All Rights Reserved. Unauthorized use prohibited.
+Logo © 2026 MR Cobblers - All Rights Reserved. Unauthorized use prohibited.
 
 ---
 
