@@ -147,7 +147,7 @@ contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
     // Google Apps Script Web App URL
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbytHM3YSNnPLgBhzheId2UrObxH6ejPlKHGkS-ieeuq6KPOXXG03ddk52enEl3DP8B8/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby5cwseS2CGO6tYg-1eSEJEibN54WZv-hdlwDmc9gRH3udu6PNqxfBRfNW48p2DOdE/exec';
 
     // Show loading state
     const submitBtn = contactForm.querySelector('button[type="submit"]');
@@ -168,7 +168,7 @@ contactForm.addEventListener('submit', function (e) {
 
             // 2. Prepare WhatsApp Message
             const phoneNumber = "918801091101";
-            const text = `Hello *Mr Cobblers*,%0a%0aI would like to book a service:%0aReference No: ${Date.now().toString().slice(-4)}%0a---------------------------%0a*Name*: ${formObject.name}%0a*Service*: ${formObject.service}%0a*Phone*: ${formObject.phone}%0a*Address*: ${formObject.address}%0a*Note*: ${formObject.message}%0a---------------------------%0aPlease confirm my booking.`;
+            const text = `Hello *Mr Cobblers*,%0a%0aI would like to book a service via your website: https://mrcobblers.com/%0a%0aReference No: ${Date.now().toString().slice(-4)}%0a---------------------------%0a*Name*: ${formObject.name}%0a*Service*: ${formObject.service}%0a*Phone*: ${formObject.phone}%0a*Address*: ${formObject.address}%0a*Note*: ${formObject.message}%0a---------------------------%0aPlease confirm my booking.`;
 
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${text}`;
 
